@@ -1,3 +1,4 @@
+// server.js
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
@@ -6,8 +7,8 @@ const app = express();
 app.use(cors()); // allow your app to call this from anywhere
 
 const PCLOUD_API_BASE = 'https://eapi.pcloud.com';
-const PCLOUD_USERNAME = "brainhop@gmx.at";
-const PCLOUD_PASSWORD = "k.e.brainhop";
+const PCLOUD_USERNAME = 'brainhop@gmx.at';
+const PCLOUD_PASSWORD = 'k.e.brainhop';
 
 let cachedAuthToken = null;
 
@@ -32,7 +33,7 @@ async function getAuthToken() {
   return cachedAuthToken;
 }
 
-// Option A: use full *path* inside your pCloud
+// (Optional) old endpoint, now just for debugging if you want
 app.get('/pcloud/file-url', async (req, res) => {
   try {
     const path = req.query.path;
@@ -42,7 +43,6 @@ app.get('/pcloud/file-url', async (req, res) => {
       return res.status(400).json({ error: 'path or code is required' });
     }
 
-    // ---- 1) Use path + auth (private files) ----
     if (path) {
       const auth = await getAuthToken();
       const params = new URLSearchParams({ path, auth });
@@ -62,7 +62,6 @@ app.get('/pcloud/file-url', async (req, res) => {
       return res.json({ url });
     }
 
-    // ---- 2) Or use a public-link CODE (if you prefer publinks) ----
     if (code) {
       const params = new URLSearchParams({ code });
 
@@ -81,6 +80,74 @@ app.get('/pcloud/file-url', async (req, res) => {
   } catch (err) {
     console.error('Backend /pcloud/file-url error:', err);
     res.status(500).json({ error: 'internal', message: err.message });
+  }
+});
+
+/**
+ * NEW: stream endpoint
+ * app/video URL will be:  https://brainhop-app-backend.onrender.com/pcloud/stream?path=/0-21-Tage-Programm/...
+ */
+app.get('/pcloud/stream', async (req, res) => {
+  try {
+    const path = req.query.path;
+    if (!path || typeof path !== 'string') {
+      return res.status(400).json({ error: 'path query param is required' });
+    }
+
+    // 1) resolve a direct pCloud link with auth+path
+    const auth = await getAuthToken();
+    const params = new URLSearchParams({ path, auth });
+
+    const linkRes = await fetch(`${PCLOUD_API_BASE}/getfilelink?${params.toString()}`);
+    const linkJson = await linkRes.json();
+
+    if (linkJson.result !== 0) {
+      console.error('getfilelink error (stream):', linkJson);
+      return res
+        .status(500)
+        .json({ error: 'getfilelink failed', details: linkJson });
+    }
+
+    const host = Array.isArray(linkJson.hosts) ? linkJson.hosts[0] : linkJson.hosts;
+    const filePath = linkJson.path;
+
+    if (!host || !filePath) {
+      console.error('Invalid getfilelink response (stream):', linkJson);
+      return res.status(500).json({ error: 'invalid getfilelink response' });
+    }
+
+    const fileUrl =
+      host.startsWith('http') ? `${host}${filePath}` : `https://${host}${filePath}`;
+
+    // 2) Forward Range header so video seeking works
+    const range = req.headers.range;
+    const headers = {};
+    if (range) {
+      headers['range'] = range;
+    }
+
+    const fileRes = await fetch(fileUrl, { headers });
+
+    // 3) Copy status + headers
+    res.status(fileRes.status);
+    fileRes.headers.forEach((value, key) => {
+      if (key.toLowerCase() === 'transfer-encoding') return; // avoid conflicts
+      res.setHeader(key, value);
+    });
+
+    // 4) Pipe body
+    if (!fileRes.body) {
+      return res.end();
+    }
+
+    fileRes.body.pipe(res);
+  } catch (err) {
+    console.error('Backend /pcloud/stream error:', err);
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'stream failed', message: err.message });
+    } else {
+      res.end();
+    }
   }
 });
 
