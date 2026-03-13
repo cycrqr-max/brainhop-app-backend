@@ -161,8 +161,14 @@ Each module includes:
 ## 11. AI & Future Features
 
 * Re-test cognitive performance every few weeks.
-* AI brain coach using Azure AI Foundry.
-* Suggest exercises, challenges, and rewards tailored to individual progress.
+* **AI Brain Coach Agent:**
+
+  * Personalized assistant that analyzes user data, performance, and preferences.
+  * Suggests exercises, mini-challenges, or training adjustments.
+  * Provides motivational tips and nudges based on streaks, XP, or progress.
+  * Tracks long-term cognitive trends and predicts areas for improvement.
+  * Can adapt difficulty in real-time for exercises or games.
+* AI suggestions integrate with gamification and reward loops.
 * Adaptive difficulty: exercises adjust automatically based on performance.
 
 ---
@@ -200,6 +206,7 @@ Each module includes:
 * Anonymous surveys and mental health check-ins.
 * Gamified exercises for employees.
 * Aggregated dashboards for management (without personal data).
+* Trainings about certain topics like burnout, etc...
 
 ---
 
@@ -212,3 +219,5 @@ Each module includes:
 * Personalized training preferences
 * Mini-challenges and motivational nudges
 * Adaptive difficulty and engagement loops
+* AI agent integration for personalized coaching
+
