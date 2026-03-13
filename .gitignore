@@ -1,3 +1,6 @@
 **.txt
 github-token.txt
 videos/**
+node_modules/
+node_modules/**
+node_modules

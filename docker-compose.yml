@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  backend:
+    build: .
+    container_name: brainhop-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=brainhop
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=brainhopdb
+    depends_on:
+      - postgres
+    volumes:
+      - ./videos:/app/videos
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: brainhop-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: brainhop
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: brainhopdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
