@@ -14,6 +14,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/cycrqr-max/brainhop-backend:latest .
+
+      - name: Push Docker image
+        run: docker push ghcr.io/cycrqr-max/brainhop-backend:latest
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -24,7 +37,6 @@ jobs:
         with:
           azcliversion: 2.56.0
           inlineScript: |
-            # Replace with your resource group and container app name
             RESOURCE_GROUP="brainhop-backend-dev"
             CONTAINER_APP_NAME="brainhop-backend-ca-dev"
             IMAGE="ghcr.io/cycrqr-max/brainhop-backend:latest"
