@@ -7,12 +7,12 @@ Users take tests that measure brain performance—reaction time, memory, attenti
 1. Allows users to see personal improvement over time.
 2. Uploads results to a leaderboard for online comparison.
 
-### Leaderboard Sections:
+### Leaderboard Sections
 
 1. **Test Section** – Tracks performance on general brain health tests.
 2. **Consecutive Training Days Leaderboard** – Shows users with the longest streaks.
 3. **Progress Leaderboard** – Aggregates scores from completed training modules.
-4. **Additional Section Ideas:**
+4. **Additional Sections**
 
    * Challenge-based leaderboard (weekly/monthly competitions)
    * Friends leaderboard (compare with selected users)
@@ -23,12 +23,12 @@ Users take tests that measure brain performance—reaction time, memory, attenti
 
 Gamification encourages engagement through rewards, progression, and fun mechanics.
 
-### Key Features:
+### Key Features
 
 1. **Cosmetics & Avatars**
 
    * Users earn points/coins for training.
-   * Points can unlock cosmetic upgrades for a 3D avatar, a “brain mascot,” or fun memory-themed characters.
+   * Points unlock cosmetic upgrades for a 3D avatar, “brain mascot,” or memory-themed characters.
    * Optional shop for additional items.
 
 2. **Brain Health Games**
@@ -43,14 +43,20 @@ Gamification encourages engagement through rewards, progression, and fun mechani
 
 3. **Challenges & XP System**
 
-   * Daily or weekly challenges
-   * XP for each completed exercise
+   * Daily or weekly challenges.
+   * XP for each completed exercise.
    * Level system to track progress:
 
      * Level 1 – Beginner Brain
      * Level 10 – Focus Master
      * Level 25 – Neuro Athlete
-   * Unlock badges: Focus Master, Memory Hero, Stress Ninja
+   * Unlock badges: Focus Master, Memory Hero, Stress Ninja.
+
+4. **Mini-Challenges**
+
+   * Example: “Focus Friday” or “Memory Monday.”
+   * Short weekly competitions feeding into the leaderboard.
+   * Encourages consistent engagement.
 
 ---
 
@@ -59,16 +65,17 @@ Gamification encourages engagement through rewards, progression, and fun mechani
 * **Secure login and user management** via Azure AD or Keycloak.
 * Support for **Google Sign-In**.
 * Multi-platform-ready for web and mobile apps.
-* Consider **parent mode** for children’s accounts with monitoring features.
+* **Parent mode** for children’s accounts with monitoring features.
 
 ---
 
 ## 4. Corporate Integration
 
-* Enable companies to run short sessions for employees via a secure link.
+* Companies can run short sessions for employees via a secure link.
 * Track anonymized stress, focus, or mental well-being metrics.
-* Dashboard for employers (high-level trends, not personal data)
+* Dashboard for employers (high-level trends, no personal data).
 * Optional gamified learning modules on burnout prevention or cognitive skills.
+* **Corporate Micro-Trainings:** 5–10 min “brain breaks” for teams.
 
 ---
 
@@ -82,7 +89,7 @@ Each module includes:
 * ⏱ Recommended duration
 * 🎯 Target skill (focus, memory, stress regulation, etc.)
 
-### Example Categories:
+### Example Categories
 
 * Focus training
 * Memory training
@@ -92,7 +99,22 @@ Each module includes:
 
 ---
 
-## 6. Progress Visuals
+## 6. Personalized Training Preferences
+
+* Users select which cognitive skills to focus on:
+
+  * Short-term memory
+  * Long-term memory
+  * Reaction time
+  * Concentration / focus
+  * Stress regulation
+  * Cognitive flexibility
+* The system tailors daily workouts based on preferences.
+* Preferences can be updated over time, allowing users to shift focus.
+
+---
+
+## 7. Progress Visuals
 
 * **3D Brain Model:** Highlights brain regions being trained.
 * **Avatar/Neural Network:** Visual representation of progress and skill growth.
@@ -102,10 +124,11 @@ Each module includes:
   * Streak days
   * Completed exercises
   * Focus score / cognitive endurance
+* Visual feedback includes brain area highlights or avatar growth.
 
 ---
 
-## 7. Daily & Automated Workouts
+## 8. Daily & Automated Workouts
 
 * System generates **“Today’s Brain Workout”** automatically:
   1️⃣ Focus exercise
@@ -115,7 +138,7 @@ Each module includes:
 
 ---
 
-## 8. Feedback & Analytics
+## 9. Feedback & Analytics
 
 * Post-training feedback: stress, focus, mood (1–10 scale).
 * Tracks improvement over weeks.
@@ -128,22 +151,51 @@ Each module includes:
 
 ---
 
-## 9. Parent & Trainer Modes
+## 10. Parent & Trainer Modes
 
 * **Parent Mode:** Track children’s training, progress, and streaks.
 * **Trainer Portal:** Manage special clients, assign trainings, monitor progress.
 
 ---
 
-## 10. AI & Future Features
+## 11. AI & Future Features
 
 * Re-test cognitive performance every few weeks.
 * AI brain coach using Azure AI Foundry.
 * Suggest exercises, challenges, and rewards tailored to individual progress.
+* Adaptive difficulty: exercises adjust automatically based on performance.
 
 ---
 
-## 11. Corporate / Organizational Features
+## 12. Additional Engagement Features
+
+* **Reminders & Motivation**
+
+  * Daily push notifications or emails for streak maintenance.
+  * Motivational messages tied to progress or milestones.
+* **Social Features (Optional)**
+
+  * Friends lists, sharing achievements, or sending challenges.
+  * Light competition or cooperation.
+* **Offline Mode**
+
+  * Some exercises or games can be done offline and synced later.
+* **Progress Reports**
+
+  * Weekly or monthly summaries with trends and achievements.
+  * Visuals include graphs, brain maps, or avatar progress.
+* **Integration with Wearables (Optional)**
+
+  * Track stress or focus via biometrics.
+  * Inform training adjustments automatically.
+* **Reward Loops**
+
+  * Badges or XP for streaks and challenges.
+  * Unlockable cosmetic items or visual effects tied to achievements.
+
+---
+
+## 13. Corporate / Organizational Features
 
 * Anonymous surveys and mental health check-ins.
 * Gamified exercises for employees.
@@ -151,9 +203,12 @@ Each module includes:
 
 ---
 
-### Extras / Notes from Draw.io Session
+### Extras / Notes
 
 * Leaderboard flexibility (friends, weekly/monthly, category-based)
 * Reward loops for engagement (streaks, XP, badges)
 * Clear visualizations to show brain regions trained
 * Progressive difficulty in exercises
+* Personalized training preferences
+* Mini-challenges and motivational nudges
+* Adaptive difficulty and engagement loops
