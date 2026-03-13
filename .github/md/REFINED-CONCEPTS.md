@@ -220,4 +220,5 @@ Each module includes:
 * Mini-challenges and motivational nudges
 * Adaptive difficulty and engagement loops
 * AI agent integration for personalized coaching
+* The 3D Avatar will also show you the training exercise
 
