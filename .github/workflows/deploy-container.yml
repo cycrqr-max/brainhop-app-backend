@@ -6,6 +6,11 @@ on:
     branches:
       - main
 
+permissions: 
+  contents: read 
+  packages: write 
+  id-token: write
+
 jobs:
   deploy-container:
     runs-on: ubuntu-latest
