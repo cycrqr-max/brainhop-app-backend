@@ -7,11 +7,11 @@ param domain = 'brainhop'
 param costcenter = '10000'
 param additionalTags = {}
 
-param containerImageWithVersion = 'ghcr.io/<your-org>/brainhop-backend:latest'
+param containerImageWithVersion = 'ghcr.io/cycrqr-max/brainhop-backend:latest'
 
 param postgresAdminUser = 'brainhopadmin'
 @secure()
-param postgresAdminPassword = '<your-secure-password>'
+param postgresAdminPassword = 'testpassword'
 
 param storageAccountName = 'brainhopbackendstorage'
 
@@ -27,7 +27,7 @@ param targetPort = 8080
 
 param containerAppSecrets = [
   {
-    name: 'github-token'
+    name: 'ghcr-token'
     keyVaultUrl: '<your-keyvault-url>/secrets/GitHubPAT'
   }
 ]
