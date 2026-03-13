@@ -1,5 +1,3 @@
----
-
 # BrainHop – Concept Overview
 
 ## 1. Leaderboard Concept
@@ -159,5 +157,3 @@ Each module includes:
 * Reward loops for engagement (streaks, XP, badges)
 * Clear visualizations to show brain regions trained
 * Progressive difficulty in exercises
-
----
